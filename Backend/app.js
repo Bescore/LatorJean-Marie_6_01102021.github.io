@@ -1,10 +1,17 @@
 //CONSTANTE//
+const bodyParser = require( 'body-parser' );
 const express = require( 'express' );
 const app = express();
 const mongoose = require( 'mongoose' );
+const sauceRoutes = require( './routes/sauces' )
+
+//TRANSFORMER LES REQUÊTES EN OBJET//
+app.use( bodyParser.json() );
+//DÉBUT DE LA ROUTE, APPLIQUER LE ROUTER POUR À CETTE ROUTE//
+app.use( '/api/sauces', sauceRoutes );
 
 
-//CORS (ABAISSER LA SÉCURITÉ EXPRESS POUR QUE TOUTS LES UTILISATEURS AIENT ACCÈS À L'APP)//
+//CORS (ABAISSER LA SÉCURITÉ EXPRESS POUR QUE TOUS LES UTILISATEURS AIENT ACCÈS À L'APP)//
 app.use( ( req, res, next ) => {
     res.setHeader( 'Access-Control-Allow-Origin', '*' );
     res.setHeader( 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization' );
