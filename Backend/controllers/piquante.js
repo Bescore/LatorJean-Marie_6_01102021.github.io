@@ -52,3 +52,10 @@ exports.deleteSauce = ( req, res, next ) => {
         .catch( error => res.status( 500 ).json( { error } ) );
     
 };
+
+
+
+
+exports.createLike = ( req, res, next ) => {
+    console.log(req.body)
+}
