@@ -5,7 +5,7 @@ const app = express();
 const mongoose = require( 'mongoose' );
 const sauceRoutes = require( './routes/sauces' );
 const userRoutes = require( './routes/user' );
-//Donne accès au chemin de notre système de fichier (images)//
+//DONNE ACCÈS AU CHEMIN DE NOTRE SYSTÈME DE FICHIER (IMAGES)//
 const path = require( 'path' );
 
 
