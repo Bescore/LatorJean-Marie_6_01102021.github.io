@@ -15,7 +15,7 @@ app.use( ( req, res, next ) => {
     next();
 } );
 
-//TRANSFORMER LES REQUÊTES EN OBJET//
+//EXTRAIRE LES OBJETS JSON//
 app.use( bodyParser.json() );
 //DÉBUT DE LA ROUTE, APPLIQUER LE ROUTER POUR À CETTE ROUTE//
 app.use( '/api/sauces', sauceRoutes );

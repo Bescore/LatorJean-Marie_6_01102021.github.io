@@ -14,10 +14,10 @@ exports.signup = ( req, res, next ) => {
                 password: hash
             } );
             user.save()
-                .then(()=>res.status(201).json({message: 'adorateur de sauce créé !'}))
-                .catch( error => res.status( 400 ).json( { error } ));
-        })
-        .catch(error=>res.status(500).json({error}));
+                .then( () => res.status( 201 ).json( { message: 'adorateur de sauce créé !' } ) )
+                .catch( error => res.status( 400 ).json( { error } ) );
+        } )
+        .catch( error => res.status( 500 ).json( { error } ) );
 };
 
 exports.login = ( req, res, next ) => {
@@ -35,9 +35,9 @@ exports.login = ( req, res, next ) => {
                         userId: user._id,
                         token: 'TOKEN'
                     } );
-                })
-                .catch( error => res.status( 500 ).json( { error } ));
-        })
+                } )
+                .catch( error => res.status( 500 ).json( { error } ) );
+        } )
         .catch( error => res.status( 500 ).json( { error } ) );
-    
+
 };
