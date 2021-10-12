@@ -10,7 +10,8 @@ exports.getAllSauce = ( req, res, next ) => {
     
   
 exports.createSauce = ( req, res, next ) => {
-    const sauceObject = JSON.parse( req.body.thing );
+    console.log(req.body.sauce)
+    const sauceObject = JSON.parse( req.body.sauce);
     delete sauceObject._id;
     const sauces = new Sauces( {
         ...sauceObject,
