@@ -5,7 +5,8 @@ const app = express();
 const mongoose = require( 'mongoose' );
 const sauceRoutes = require( './routes/sauces' );
 const userRoutes = require( './routes/user' );
-
+//Donne accès au chemin de notre système de fichier (images)//
+const path = require( 'path' );
 
 
 
@@ -23,6 +24,8 @@ app.use( bodyParser.json() );
 app.use( '/api/sauces', sauceRoutes );
 //ROUTES D'AUTHENTIFICATIONS//
 app.use( '/api/auth', userRoutes );
+//MULTER STATIC//
+app.use( '/images', express.static( path.join( __dirname, 'images' ) ) );
 
 
 
