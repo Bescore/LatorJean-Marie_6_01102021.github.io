@@ -7,6 +7,7 @@ const sauceRoutes = require( './routes/sauces' )
 const userRoutes = require( './routes/user' );
 
 
+
 //CORS (ABAISSER LA SÉCURITÉ EXPRESS POUR QUE TOUS LES UTILISATEURS AIENT ACCÈS À L'APP)//
 app.use( ( req, res, next ) => {
     res.setHeader( 'Access-Control-Allow-Origin', '*' );
