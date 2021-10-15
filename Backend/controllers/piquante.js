@@ -1,8 +1,7 @@
 const Sauces = require( '../models/sauces' );
 const fs = require( 'fs' );
-const sauces = require( '../models/sauces' );
-const { SSL_OP_NO_TLSv1_1 } = require( 'constants' );
-const { find } = require( '../models/sauces' );
+
+
 
 
 exports.getAllSauce = ( req, res, next ) => {
