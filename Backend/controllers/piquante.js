@@ -77,22 +77,22 @@ exports.createLike = ( req, res, next ) => {
             
             if ( usersFinder.includes( USER ) === false && req.body.like === 1  ) {
                 Sauces.updateOne( { _id: req.params.id }, { $inc: { likes: 1 }, $push: { usersLiked: req.body.userId }, _id: req.params.id } )
-                    .then( () => res.status( 200 ).json( { message: 'liké !' } ) )
+                    .then( () => res.status( 200 ).json( { message: "j'aime" } ) )
                     .catch( error => res.status( 400 ).json( { error } ) );
                 console.log( "1" )
             } else if ( usersFinderdis.includes( USER ) === false && req.body.like === -1  ) {
                 Sauces.updateOne( { _id: req.params.id }, { $inc: { dislikes: 1 }, $push: { usersDisliked: req.body.userId }, _id: req.params.id } )
-                    .then( () => res.status( 200 ).json( { message: 'unliké !' } ) )
+                    .then( () => res.status( 200 ).json( { message: "je n'aime pas" } ) )
                     .catch( error => res.status( 400 ).json( { error } ) );
                 console.log( "2" )
             } else if ( usersFinder.includes( USER ) === true  && req.body.like === 0)  {
                 Sauces.updateOne( { _id: req.params.id }, { $inc: { likes: -1 }, $pull: { usersliked: req.body.userId, usersLiked: req.body.userId }, _id: req.params.id } )
-                    .then( () => res.status( 200 ).json( { message: 'aucun like' } ) )
+                    .then( () => res.status( 200 ).json( { message: "je ne sais pas quoi en penser" } ) )
                     .catch( error => res.status( 400 ).json( { error } ) );
                 console.log( "3" );
             } else if ( usersFinderdis.includes( USER ) === true && req.body.like === 0  ) {
                 Sauces.updateOne( { _id: req.params.id }, { $inc: { dislikes: -1 }, $pull: { usersDisliked: req.body.userId, usersLiked: req.body.userId }, _id: req.params.id } )
-                    .then( () => res.status( 200 ).json( { message: 'aucun  !' } ) )
+                    .then( () => res.status( 200 ).json( { message: "je ne sais pas quoi en penser" } ) )
                     .catch( error => res.status( 400 ).json( { error } ) ); {
                     console.log( sauce.usersDisliked );
                 }
