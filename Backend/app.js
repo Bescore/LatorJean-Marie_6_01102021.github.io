@@ -1,3 +1,10 @@
+//variables mongoose//
+const Username = 'Bescore';
+const Password = 'Bescore007';
+
+
+
+
 //CONSTANTE//
 const bodyParser = require( 'body-parser' );
 const express = require( 'express' );
@@ -40,7 +47,7 @@ app.use( '/images', express.static( path.join( __dirname, 'images' ) ) );
 
 
 //LIER LA BASE DE DONNEE À L'API//
-mongoose.connect( 'mongodb+srv://Bescore:Bescore007@giwaclust.f01kg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect( `mongodb+srv://${ Username }:${ Password }@giwaclust.f01kg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
