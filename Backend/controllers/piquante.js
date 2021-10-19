@@ -12,7 +12,6 @@ exports.getAllSauce = ( req, res, next ) => {
 
 
 exports.createSauce = ( req, res, next ) => {
-    console.log( req.body.sauce )
     const sauceObject = JSON.parse( req.body.sauce );
     delete sauceObject._id;
     var sauces = new Sauces( {
@@ -35,6 +34,16 @@ exports.getOneSauce = ( req, res, next ) => {
 
 
 exports.modifySauce = ( req, res, next ) => {
+//supprime l'ancienne image du dossier image 38 à 46//
+    Sauces.findOne( { _id: req.params.id } )
+        .then( sauce => {
+            const filename = sauce.imageUrl.split( '/images/' )[ 1 ];
+            fs.unlink( `images/${ filename }`, () => {
+                console.log("la précédente image a été supprimé du serveur")
+            } );
+        } )
+        .catch( error => res.status( 500 ).json( { message : "la précédente image n'a pas été supprimé du serveur"} ) );
+//////////////////////////////////////////////////////////////////////////
     const sauceObject = req.file ?
         {
             ...JSON.parse( req.body.sauce ),
@@ -66,40 +75,37 @@ exports.deleteSauce = ( req, res, next ) => {
 var usersFinder = 0;
 var usersFinderdis = 0;
 exports.createLike = ( req, res, next ) => {
-    console.log( "createLike" );
-    console.log( req.body );
     Sauces.findOne( { _id: req.params.id } )
         .then( sauce => {
             usersFinder = sauce.usersLiked;
             usersFinderdis = sauce.usersDisliked;
             const USER = req.body.userId
-            
-            if ( usersFinder.includes( USER ) === false && req.body.like === 1  ) {
+
+            if ( usersFinder.includes( USER ) === false && req.body.like === 1 ) {
                 Sauces.updateOne( { _id: req.params.id }, { $inc: { likes: 1 }, $push: { usersLiked: req.body.userId }, _id: req.params.id } )
                     .then( () => res.status( 200 ).json( { message: "j'aime" } ) )
                     .catch( error => res.status( 400 ).json( { error } ) );
-                
-            } else if ( usersFinderdis.includes( USER ) === false && req.body.like === -1  ) {
+
+            } else if ( usersFinderdis.includes( USER ) === false && req.body.like === -1 ) {
                 Sauces.updateOne( { _id: req.params.id }, { $inc: { dislikes: 1 }, $push: { usersDisliked: req.body.userId }, _id: req.params.id } )
                     .then( () => res.status( 200 ).json( { message: "je n'aime pas" } ) )
                     .catch( error => res.status( 400 ).json( { error } ) );
-                
-            } else if ( usersFinder.includes( USER ) === true  && req.body.like === 0)  {
+
+            } else if ( usersFinder.includes( USER ) === true && req.body.like === 0 ) {
                 Sauces.updateOne( { _id: req.params.id }, { $inc: { likes: -1 }, $pull: { usersliked: req.body.userId, usersLiked: req.body.userId }, _id: req.params.id } )
                     .then( () => res.status( 200 ).json( { message: "je ne sais pas quoi en penser" } ) )
                     .catch( error => res.status( 400 ).json( { error } ) );
-                
-            } else if ( usersFinderdis.includes( USER ) === true && req.body.like === 0  ) {
+
+            } else if ( usersFinderdis.includes( USER ) === true && req.body.like === 0 ) {
                 Sauces.updateOne( { _id: req.params.id }, { $inc: { dislikes: -1 }, $pull: { usersDisliked: req.body.userId, usersLiked: req.body.userId }, _id: req.params.id } )
                     .then( () => res.status( 200 ).json( { message: "je ne sais pas quoi en penser" } ) )
                     .catch( error => res.status( 400 ).json( { error } ) ); {
-                    console.log( sauce.usersDisliked );
                 }
 
 
             }
         } )
-            .catch( error => res.status( 500 ).json( { error } ) );
+        .catch( error => res.status( 500 ).json( { error } ) );
 
-    
+
 }
