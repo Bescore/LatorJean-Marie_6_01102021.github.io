@@ -28,3 +28,4 @@ Use `Ctrl+C` in the terminal to stop the local server.
 ----------------------------------------------------------------
 
 Projet 6
+ aller dans backend=> app.js=> remplacer les variables username et password par les variables founies dans les livrables, ou si vous possédez un serveur mongoose atlas, inscrivez juste vos identifiants correspondants.
