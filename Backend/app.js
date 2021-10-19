@@ -1,11 +1,11 @@
-//variables mongoose//
+//VARIABLES MONGOOSE//
 const Username = 'Bescore';
 const Password = 'Bescore007';
 
 
 
 
-//CONSTANTE//
+//CONSTANTES//
 const bodyParser = require( 'body-parser' );
 const express = require( 'express' );
 const app = express();
