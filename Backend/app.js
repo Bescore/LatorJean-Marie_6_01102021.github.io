@@ -7,8 +7,8 @@ const sauceRoutes = require( './routes/sauces' );
 const userRoutes = require( './routes/user' );
 //DONNE ACCÈS AU CHEMIN DE NOTRE SYSTÈME DE FICHIER (IMAGES)//
 const path = require( 'path' );
-
-
+//HELMET CONST//
+const helmet = require( 'helmet' );
 
 //CORS (ABAISSER LA SÉCURITÉ EXPRESS POUR QUE TOUS LES UTILISATEURS AIENT ACCÈS À L'APP)//
 app.use( ( req, res, next ) => {
@@ -17,6 +17,15 @@ app.use( ( req, res, next ) => {
     res.setHeader( 'Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS' );
     next();
 } );
+
+
+//HELMET//
+app.use( helmet() );
+//helmet x-powered-by//
+app.disable( 'x-powered-by' );
+
+
+
 
 //EXTRAIRE LES OBJETS JSON//
 app.use( bodyParser.json() );
