@@ -28,4 +28,12 @@ Use `Ctrl+C` in the terminal to stop the local server.
 ----------------------------------------------------------------
 
 Projet 6
- aller dans backend=> app.js=> remplacer les variables username et password par les variables founies dans les livrables, ou si vous possédez un serveur mongoose atlas, inscrivez juste vos identifiants correspondants.
+
+API REST
+
+Pour demmarer mon projet vous devez posseder NODE.js :
+
+1. dans le terminale, cd backend => npm install => nodemon server si vous le possédez ou node server.
+2. dans un autre terminale, cd frontend => npm install => npm start
+
+ aller dans backend => app.js => remplacer les variables username et password par les variables fournies dans les livrables, si vous possédez un serveur mongoDB atlas, inscrivez  vos identifiants correspondants.
