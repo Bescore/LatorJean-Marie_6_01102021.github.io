@@ -1,4 +1,4 @@
-//VARIABLES MONGOOSE//
+//VARIABLES MONGOOSE À REMPLACER//
 const Username = 'username';
 const Password = 'motdepass';
 
