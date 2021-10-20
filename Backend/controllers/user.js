@@ -9,7 +9,7 @@ const jwt = require( 'jsonwebtoken' );
 
 
 exports.signup = ( req, res, next ) => {
-    var regex = new RegExp( '^[.&a-zA-Z0-9!%&*,/:;?@^_]+$' );
+    var regex = new RegExp( '^[.&a-zA-Z0-9!%&*,/:;?@^_.]+$' );
     var pass = req.body.password
     console.log( regex.test( pass ) )
     if ( regex.test( pass ) === true ) {
