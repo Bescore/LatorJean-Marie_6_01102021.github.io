@@ -40,6 +40,11 @@ const limiter = rateLimit( {
     max: 100 // limit each IP to 100 requests per windowMs
 } );
 
+app.use( limiter );  //  apply to all requests
+
+
+
+
 //EXPRESS-SESSION, CHANGE LE NOM DU COOKIE//
 var session = require( 'express-session' );
 app.set( 'trust proxy', 1 ) // trust first proxy
@@ -48,14 +53,6 @@ app.use( session( {
     name: 'sessionId',
 } )
 );
-
-
-
-
-
-
-//  apply to all requests
-app.use( limiter );
 
 
 //EXTRAIRE LES OBJETS JSON//
