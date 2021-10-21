@@ -35,7 +35,7 @@ const errorHandler = error => {
     }
 };
 
-const server = http.createServer( app );
+const server = http.createServer( app );//VOICI NOTRE SERVEUR !!//
 
 server.on( 'error', errorHandler );
 server.on( 'listening', () => {
