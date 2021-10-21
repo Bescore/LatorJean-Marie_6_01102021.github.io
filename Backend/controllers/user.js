@@ -9,10 +9,13 @@ const jwt = require( 'jsonwebtoken' );
 
 
 exports.signup = ( req, res, next ) => {
-    var regex = new RegExp( '^[.&a-zA-Z0-9!%&*,/:;?@^_.]+$' );
-    var pass = req.body.password
-    console.log( regex.test( pass ) )
-    if ( regex.test( pass ) === true ) {
+    var regexpass = new RegExp( '^[.&a-zA-Z0-9!%&*,/:;?@^_.]+$' );
+    var regexmail = new RegExp('^[.&a-zA-Z0-9!%&*,/:;?@^_.]+$')
+    var pass = req.body.password;
+    var mail = req.body.email;
+    
+    console.log( 'mot de passe ='+" "+regexpass.test( pass )+"  "+ 'email ='+ " "+ regexmail.test( mail ), req.body.email )
+    if ( regexpass.test( pass ) === true && regexmail.test( mail ) === true ) {
         bcrypt.hash( req.body.password, 10 )
             .then( hash => {
                 const user = new User( {
