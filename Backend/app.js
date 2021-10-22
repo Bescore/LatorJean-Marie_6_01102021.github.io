@@ -3,8 +3,6 @@ const Username = 'username';
 const Password = 'motdepass';
 
 
-
-
 //CONSTANTES//
 const bodyParser = require( 'body-parser' );
 const express = require( 'express' );
@@ -49,6 +47,8 @@ app.use( limiter );  //  apply to all requests
 var session = require( 'express-session' );
 app.set( 'trust proxy', 1 ) // trust first proxy
 app.use( session( {
+    saveUninitialized: false,
+    resave:false,
     secret: 's3Cur3',
     name: 'sessionId',
 } )
